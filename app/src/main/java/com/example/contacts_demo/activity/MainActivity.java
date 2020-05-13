@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public void setup()
     {
-        if(savedInst==null) {
+        if(savedInst==null&&getSupportFragmentManager()!=null) {
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.nav_host_fragment_container, finalHost)
                     .setPrimaryNavigationFragment(finalHost) // equivalent to app:defaultNavHost="true"

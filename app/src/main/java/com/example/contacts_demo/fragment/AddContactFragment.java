@@ -37,6 +37,7 @@ public class AddContactFragment extends Fragment {
     private JSONObject postData;
     private Bundle bundle;
     private DatabaseHandler db;
+    private InputMethodManager imm;
     private boolean isEdit;
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -162,7 +163,7 @@ public class AddContactFragment extends Fragment {
             isEdit=false;
 
         first_nameET.requestFocus();
-        InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.showSoftInput(first_nameET, InputMethodManager.SHOW_IMPLICIT);
         addFavIV.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -178,12 +179,14 @@ public class AddContactFragment extends Fragment {
         cancelTV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                imm.hideSoftInputFromWindow(v.getWindowToken(),0);
                 navController.navigateUp();
             }
         });
         doneTV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                imm.hideSoftInputFromWindow(v.getWindowToken(),0);
                 if(phoneET.getText().length()==0)
                 {
                     Toast.makeText(getContext(),"Phone number cannot be empty!",Toast.LENGTH_LONG);
