@@ -150,6 +150,8 @@ public class ContactListFragment extends Fragment{
     public void setScrollPos(int pos)
     {
         int firstVisibleItem = mlayoutmanager.findFirstVisibleItemPosition();
+        int dh=getActivity().getWindowManager().getDefaultDisplay().getHeight();
+        int a=dh/234;
         if(pos-firstVisibleItem<0) {
             if(pos==0)
                 listRV.smoothScrollToPosition(pos);
@@ -157,7 +159,7 @@ public class ContactListFragment extends Fragment{
                 listRV.smoothScrollToPosition(pos-1);
         }
         else
-            listRV.smoothScrollToPosition(pos+8);
+            listRV.smoothScrollToPosition(pos+a);
     }
 
 }

@@ -2,6 +2,7 @@ package com.example.contacts_demo.adapter;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,7 +50,6 @@ public class ContactListAdapter extends
     @Override
     public void onBindViewHolder(final ContactListAdapter.ViewHolder viewHolder, final int position) {
         final Contact cont= ContactList.getInstance().getContacts().getValue().get(position);
-
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

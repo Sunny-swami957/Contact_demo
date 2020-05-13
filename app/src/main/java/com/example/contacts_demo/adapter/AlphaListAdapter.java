@@ -1,12 +1,16 @@
 package com.example.contacts_demo.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.contacts_demo.R;
@@ -30,26 +34,25 @@ public class AlphaListAdapter extends
     private RecyclerView listRV;
     private TextView alphaTV;
     private int prevPos=0;
-    public AlphaListAdapter(ArrayList<String> chars,TextView alphatv,RecyclerView listrv) {
+    public AlphaListAdapter(ArrayList<String> chars, TextView alphatv, RecyclerView listrv) {
         this.mChars=chars;
         this.alphaTV=alphatv;
         this.listRV=listrv;
     }
 
-    public void scrollList(int pos,int prevpos)
+    public void scrollList(int pos,int prevpos ,int height)
     {
+        int a=height/234;
         if(pos-prevpos<0)
             listRV.smoothScrollToPosition(ContactList.getInstance().getPositions().getValue().get(pos));
         else
-            listRV.smoothScrollToPosition(ContactList.getInstance().getPositions().getValue().get(pos)+9);
+            listRV.smoothScrollToPosition(ContactList.getInstance().getPositions().getValue().get(pos)+a);
     }
     @Override
     public AlphaListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
-
         View alphaView = inflater.inflate(R.layout.alpha_list_adapter_item, parent, false);
-
         AlphaListAdapter.ViewHolder viewHolder = new AlphaListAdapter.ViewHolder(alphaView);
         return viewHolder;
     }
@@ -62,11 +65,11 @@ public class AlphaListAdapter extends
         TextView textView = viewHolder.charTextView;
         textView.setText(state);
         textView.setOnTouchListener(new View.OnTouchListener() {
+            @SuppressLint("NewApi")
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-
                 alphaTV.setText(state);
-                scrollList(position,prevPos);
+                scrollList(position,prevPos,v.getDisplay().getHeight());
                 prevPos=position;
                 return false;
             }
