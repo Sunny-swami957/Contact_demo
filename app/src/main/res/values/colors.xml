@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="button_color">#8AF5E2</color>
+    <color name="white_color">#00FFFFFF</color>
+    <color name="grey_color">#6AD5D0D0</color>
+    <color name="dark_grey_color">#6A837676</color>
+    <color name="list_bkg_color">#6AE7E6E6</color>
+    <color name="bkg_start_color">#00FFFFFF</color>
+    <color name="bkg_center_color">#B9F5E9</color>
+    <color name="bkg_add_center_color">#D7FDF5</color>
+    <color name="bkg_end_color">#B9F5E9</color>
+</resources>
